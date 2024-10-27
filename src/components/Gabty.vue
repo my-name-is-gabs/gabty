@@ -69,9 +69,8 @@
           :key="workout"
           class="workout"
           :class="`workout--${workout.type}`"
-          :data-id="workout.id"
+          @click="moveToPopup(workout.id)"
           ref="workoutContainer"
-          @click="moveToPopup"
         >
           <h2 class="workout__title">{{ workout.description }}</h2>
           <div class="workout__details">
@@ -243,10 +242,8 @@ export default {
         .openPopup();
     },
 
-    moveToPopup() {
+    moveToPopup(workoutId) {
       if (!this.map) return;
-
-      const workoutId = this.$refs.workoutContainer[0].dataset.id;
 
       const workout = this.workouts.find((work) => work.id === workoutId);
 
@@ -308,7 +305,7 @@ a:visited {
   top: 40px;
   left: 40px;
   width: 590px;
-  background-color: var(--color-dark--1);
+  background-color: rgba(11, 25, 44, 0.5);
   padding: 3rem 5rem 4rem 5rem;
   display: flex;
   flex-direction: column;
@@ -323,6 +320,7 @@ a:visited {
     width: auto;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0;
+    background-color: var(--color-dark--1);
   }
 }
 
@@ -445,51 +443,6 @@ a:visited {
 }
 
 .form__btn {
-  display: none;
-}
-
-.copyright {
-  margin-top: auto;
-  font-size: 1.3rem;
-  text-align: center;
-  color: var(--color-light--1);
-}
-
-.twitter-link:link,
-.twitter-link:visited {
-  color: var(--color-light--1);
-  transition: all 0.2s;
-}
-
-.twitter-link:hover,
-.twitter-link:active {
-  color: var(--color-light--2);
-}
-
-/* Popup width is defined in JS using options */
-.leaflet-popup .leaflet-popup-content-wrapper {
-  background-color: var(--color-dark--1);
-  color: var(--color-light--2);
-  border-radius: 5px;
-  padding-right: 0.6rem;
-}
-
-.leaflet-popup .leaflet-popup-content {
-  font-size: 1.5rem;
-}
-
-.leaflet-popup .leaflet-popup-tip {
-  background-color: var(--color-dark--1);
-}
-
-.running-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--2);
-}
-.cycling-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--1);
-}
-
-.leaflet-zoom-box {
   display: none;
 }
 </style>
