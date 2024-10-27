@@ -305,7 +305,7 @@ a:visited {
   top: 40px;
   left: 40px;
   width: 590px;
-  background-color: rgba(11, 25, 44, 0.5);
+  background-color: rgba(11, 25, 44, 0.6);
   padding: 3rem 5rem 4rem 5rem;
   display: flex;
   flex-direction: column;
